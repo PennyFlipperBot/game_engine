@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Voxel Forge Studio</title>
+    <link rel="stylesheet" href="./css/styles.css" />
+  </head>
+  <body>
+    <main id="viewport">
+      <canvas id="game"></canvas>
+      <div id="hud">
+        <div id="crosshair"></div>
+        <p id="controls-hint">Click to play · WASD move · Space jump · Shift sprint</p>
+      </div>
+      <div id="overlay"></div>
+    </main>
+
+    <aside id="sidebar">
+      <header class="sidebar-header">
+        <h1>Voxel Forge</h1>
+        <p class="subtitle">Beginner voxel engine studio</p>
+      </header>
+
+      <section class="panel">
+        <h2>World</h2>
+        <label class="field">
+          <span>Preset</span>
+          <select id="world-preset">
+            <option value="island">Island</option>
+            <option value="hills" selected>Rolling Hills</option>
+            <option value="flat">Flat Arena</option>
+            <option value="desert">Desert</option>
+          </select>
+        </label>
+
+        <label class="field">
+          <span>Seed</span>
+          <div class="row">
+            <input id="world-seed" type="number" value="1" />
+            <button type="button" id="random-seed" class="small-btn" title="Random seed">🎲</button>
+          </div>
+        </label>
+
+        <label class="field">
+          <span>Mountains <output id="mountains-val"></output></span>
+          <input id="world-mountains" type="range" min="0" max="1" step="0.05" value="0.45" />
+        </label>
+
+        <label class="field">
+          <span>Trees <output id="trees-val"></output></span>
+          <input id="world-trees" type="range" min="0" max="1" step="0.05" value="0.7" />
+        </label>
+
+        <label class="field checkbox">
+          <input id="world-water" type="checkbox" checked />
+          <span>Water / ocean</span>
+        </label>
+
+        <button type="button" id="regen-world" class="primary-btn">Regenerate World</button>
+      </section>
+
+      <section class="panel">
+        <h2>Camera</h2>
+        <div id="camera-presets" class="preset-grid"></div>
+        <p class="hint">Hotkeys: 1 FP · 2 3rd · 3 Top · 4 Side</p>
+      </section>
+
+      <section class="panel">
+        <h2>Assets</h2>
+        <div id="asset-drop" class="drop-zone">
+          <span>Drop GLB / GLTF here</span>
+          <small>or click to browse</small>
+        </div>
+        <div id="asset-list" class="asset-list"></div>
+        <button type="button" id="clear-assets" class="ghost-btn">Clear placed assets</button>
+      </section>
+
+      <footer class="sidebar-footer">
+        <span id="status-text">Ready</span>
+      </footer>
+    </aside>
+
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "https://unpkg.com/three@0.170.0/build/three.module.js",
+          "three/addons/": "https://unpkg.com/three@0.170.0/examples/jsm/"
+        }
+      }
+    </script>
+    <script type="module" src="./js/main.js"></script>
+  </body>
+</html>
